@@ -2,17 +2,6 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    basics();
-    data_types();
-
-    let param1 = 10;
-    let param2 = 12.5;
-    println!("Return value of function: {}", fn_with_params(param1, param2));
-
-    guess_the_number();
-}
-
-fn basics() {
     // Hello world!
     println!("Hello, world!");
 
@@ -26,29 +15,43 @@ fn basics() {
     let c = c * 45;
     let c = c / 24;
     println!("The value of c is {}", c);
+
+    // Invoke data types examples
+    data_types();
+
+    // Initiate guess the number
+    guess_the_number();
+}
+
+
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn subtract(a: i32, b: i32) -> i32 {
+    a - b
+}
+
+#[cfg(test)]
+mod tests {
+    use super::add;
+    use super::subtract;
+
+    #[test]
+    fn test_add() {
+        assert_eq!(2 + 5, add(2, 5))
+    }
+
+    #[test]
+    fn test_subtract() {
+        assert_eq!(-3, subtract(2, 5))
+    }
 }
 
 fn data_types() {
-    // addition
-    let sum = 5 + 10;
 
-    // subtraction
-    let difference = 95.5 - 4.3;
-
-    // multiplication
-    let product = 4 * 30;
-
-    // division
-    let quotient = 56.7 / 32.2;
-
-    // remainder
-    let remainder = 43 % 5;
-
-    println!("Sum : {}", sum);
-    println!("Difference : {}", difference);
-    println!("Product : {}", product);
-    println!("Quotient : {}", quotient);
-    println!("Remainder: {}", remainder);
+    add(2,3);
+    subtract(5,4);
 
     let t = true;
     let f: bool = false;
@@ -67,11 +70,6 @@ fn data_types() {
 
     let arry = [1, 2, 3, 4, 5];
     println!("The 4th array element is : {}", arry[3]);
-}
-
-fn fn_with_params(param1: u32, param2: f64) -> f32 {
-    println!("The params are: {} and {}", param1, param2);
-    (param2 / param1 as f64) as f32
 }
 
 fn guess_the_number() {
